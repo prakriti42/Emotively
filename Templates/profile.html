@@ -1,0 +1,139 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotively</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <title>Emotively </title>
+
+ <!-- Bootstrap core CSS -->
+ <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'  %}" rel="stylesheet">
+
+     
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+</head>
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+      <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+     <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              <img src="{% static 'images/white-logo.png' %}" alt="Emotively " width = "140px" height="80px">
+            </a>
+
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+          
+              <li class="scroll-to-section"><a> View Emotively Log</a></li>
+              <li class="scroll-to-section"><a class="active">My Profile</a></li>
+            
+              <li><div class="gradient-button"><a><i class="fa fa-user"></i> Username</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+<section>
+    
+    <div class="editprofilesection">
+        <div class="profilecontainer">
+
+            <h1 class="title">Edit Profile</h1>
+        
+            <div class="grid">
+                <div class="form-group a">
+                    <label for="name">Name</label>
+                    <input id="name" type="text">
+                </div>
+        
+                <div class="form-group b">
+                    <label for="first-name">Surname</label>
+                    <input id="first-name" type="text">
+                </div>
+        
+                <div class="form-group email-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="text">
+                </div>
+        
+                <div class="form-group phone-group">
+                    <label for="phone">Contact Number (mobile)</label>
+                    <input id="phone" type="text">
+                </div>
+        
+                <div class="textarea-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio"></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input id="address" type="text">
+                </div>
+        
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" type="text">
+                </div>
+        
+                <div class="form-group">
+                    <label for="zip">State</label>
+                    <input id="zip" type="text">
+                </div>
+            </div>
+        
+            <div class="gradient-button" style="margin-top: -80px; margin-left:420px;"><a><i class="fa fa-save"></i>  Save Changes</a></div>
+        </div>
+    </div>
+
+</section>
+
+
+ 
+  <!-- Scripts -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/owl-carousel.js' %}"></script>
+  <script src="{% static 'js/animation.js' %}"></script>
+  <script src="{% static 'js/imagesloaded.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+$white: #ffffff;
+$grey: #E5E5E5;
+$grey-dark: #B5B4B9;
+
+$green: #6ABB5C;
+$blue: #4FABE4;
+
+body {
+  background: $white;
+}
+
+.wrapper {
+  padding: 2rem;
+}
+
+.audio-wrapper {
+  margin: 0 0 2rem 0;
+}
+
+.audio {
+  width: 100%;
+  
+  &::-webkit-media-controls-panel {
+    background: white;
+  }
+}
+
+.toolbar {
+  text-align: center
+}
+
+.button {
+  transition: all .4s ease-in-out;
+  
+  position: inline-block;
+  padding: .6rem 1rem;
+  
+  background: $white;
+  
+  border: 1px solid $grey;
+  border-radius: 0;
+  outline: none;
+  
+  text-transform: uppercase;
+  color: $grey-dark;
+  
+  &--start:hover {
+    background: $green;
+    
+    border-color: darken($green, 5);
+    
+    color: $white;
+  }
+    
+  &--stop:hover {
+    background: $blue;
+    
+    border-color: darken($blue, 5);
+    
+    color: $white;
+  }
+}
+

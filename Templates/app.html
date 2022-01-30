@@ -1,0 +1,217 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <title>Emotively </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'  %}" rel="stylesheet">
+
+<!--
+
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/audioinput.css' %}">
+    <link rel="stylesheet" href="{% static 'css/map.css' %}">
+
+  </head>
+
+<body>
+
+     <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              <img src="{% static 'images/white-logo.png' %}" alt="Emotively " width = "140px" height="80px">
+            </a>
+
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+          
+              <li class="scroll-to-section"><a> View Emotively Log</a></li>
+              <li class="scroll-to-section"><a href="profile.html">My Profile</a></li>
+            
+              <li><div class="gradient-button"><a><i class="fa fa-user"></i> Username</a></div></li> 
+            </ul>        
+            <a class='menu-trigger'>
+                <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <div >
+
+    <div class="mapaudio">
+      <svg preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+  
+              <mask id="mask">
+                  <g id="maskGroup">
+                </g>
+              </mask>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style="stop-color:#4b8ef1;stop-opacity:1" />
+                  <stop offset="20%" style="stop-color:#4b8ef1;stop-opacity:1" />
+                  <stop offset="50%" style="stop-color:#4b8ef1;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#4b8ef1;stop-opacity:1" />
+              </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
+      </svg>
+  
+  <h1>In <a>Audio Disabled</a>, please allow the use of your microphone</h1>
+  </div>
+
+    <div >
+      <div class="mainsection" data-wow-duration="1s" data-wow-delay="0.5s" >
+        <img src="{% static 'images/interactions.png' %}" alt="">
+        <div class="audioinputsection" >
+          <div class="container">
+            <h1>Record Your Voice To Detect Current Emotion</h1>
+            <span>Recorder</span>
+            <audio id="recorder" muted hidden></audio>
+            <div class="btn-recorder">
+              <button   id="start">RECORD</button>
+              <button id="stop">STOP</button>
+              <span>Saved Recording</span>
+            </div>
+            
+	          <audio id="player" controls></audio>
+            <div class="inside">
+             
+             <div class="btnarea">
+              <div class="gradient-button-detect"><a ><i class="fa fa-circle" ></i> Detect My Emotion</a></div>
+              <div>
+                <h3> You are happy </h3>
+              </div>
+             </div>
+          
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    class VoiceRecorder {
+      constructor() {
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+          console.log("getUserMedia supported")
+        } else {
+          console.log("getUserMedia is not supported on your browser!")
+        }
+    
+        this.mediaRecorder
+        this.stream
+        this.chunks = []
+        this.isRecording = false
+    
+        this.recorderRef = document.querySelector("#recorder")
+        this.playerRef = document.querySelector("#player")
+        this.startRef = document.querySelector("#start")
+        this.stopRef = document.querySelector("#stop")
+        
+        this.startRef.onclick = this.startRecording.bind(this)
+        this.stopRef.onclick = this.stopRecording.bind(this)
+    
+        this.constraints = {
+          audio: true,
+          video: false
+        }
+        
+      }
+    
+      handleSuccess(stream) {
+        this.stream = stream
+        this.stream.oninactive = () => {
+          console.log("Stream ended!")
+        };
+        this.recorderRef.srcObject = this.stream
+        this.mediaRecorder = new MediaRecorder(this.stream)
+        console.log(this.mediaRecorder)
+        this.mediaRecorder.ondataavailable = this.onMediaRecorderDataAvailable.bind(this)
+        this.mediaRecorder.onstop = this.onMediaRecorderStop.bind(this)
+        this.recorderRef.play()
+        this.mediaRecorder.start()
+      }
+    
+      handleError(error) {
+        console.log("navigator.getUserMedia error: ", error)
+      }
+      
+      onMediaRecorderDataAvailable(e) { this.chunks.push(e.data) }
+      
+      onMediaRecorderStop(e) { 
+          const blob = new Blob(this.chunks, { 'type': 'audio/ogg; codecs=opus' })
+          const audioURL = window.URL.createObjectURL(blob)
+          this.playerRef.src = audioURL
+          this.chunks = []
+          this.stream.getAudioTracks().forEach(track => track.stop())
+          this.stream = null
+      }
+    
+      startRecording() {
+        if (this.isRecording) return
+        this.isRecording = true
+        this.startRef.innerHTML = 'RECORDING!'
+        this.playerRef.src = ''
+        navigator.mediaDevices
+          .getUserMedia(this.constraints)
+          .then(this.handleSuccess.bind(this))
+          .catch(this.handleError.bind(this))
+      }
+      
+      stopRecording() {
+        if (!this.isRecording) return
+        this.isRecording = false
+        this.startRef.innerHTML = 'RECORD'
+        this.recorderRef.pause()
+        this.mediaRecorder.stop()
+      }
+      
+    }
+    
+    window.voiceRecorder = new VoiceRecorder()
+    
+  </script>
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/map.js' %}"></script>
+
+  <!-- Scripts -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/owl-carousel.js' %}"></script>
+  <script src="{% static 'js/animation.js' %}"></script>
+  <script src="{% static 'js/imagesloaded.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
