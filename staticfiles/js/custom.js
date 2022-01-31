@@ -37,7 +37,7 @@
   });
   
   $("#modal_trigger").leanModal({
-		top: 100,
+		top: 50,
 		overlay: 0.6,
 		closeButton: ".modal_close"
 });

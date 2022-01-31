@@ -64,7 +64,7 @@
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
               <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="#pricing">Guide</a></li>
+              <li class="scroll-to-section"><a href="#guide">Guide</a></li>
             
               <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Try Now</a></div></li> 
             </ul>        
@@ -86,15 +86,10 @@
     </div>
 
     <section class="popupBody">
+        {% block main %}
         <!-- Social Login -->
         <div class="social_login">
             <div class="">
-                <a href="#" class="social_box fb">
-                    <span class="icon"><i class="fab fa-facebook"></i></span>
-                    <span class="icon_title">Connect with Facebook</span>
-
-                </a>
-
                 <a href="#" class="social_box google">
                     <span class="icon"><i class="fab fa-google-plus"></i></span>
                     <span class="icon_title">Connect with Google</span>
@@ -113,23 +108,24 @@
 
         <!-- Username & Password Login form -->
         <div class="user_login">
-            <form>
+            <form action="login" method="POST">
+                {% csrf_token %}
                 <label>Email / Username</label>
-                <input type="text" />
+                <input type="text" name="username"/>
                 <br />
 
                 <label>Password</label>
-                <input type="password" />
+                <input type="password" name="password" />
                 <br />
 
-                <div class="checkbox">
+                <!-- <div class="checkbox">
                     <input id="remember" type="checkbox" />
                     <label for="remember">Remember me on this computer</label>
-                </div>
+                </div> -->
 
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <div class="one_half last"><a href="#" class="btn btn_red">Login</a></div>
+                    <div class="one_half last"><button type="submit" class="btn btn_red">Login</button></div>
                 </div>
             </form>
 
@@ -138,30 +134,34 @@
 
         <!-- Register Form -->
         <div class="user_register">
-            <form>
-                <label>Full Name</label>
-                <input type="text" />
+            <form action= "register" method="POST">
+              {% csrf_token %} 
+                <label for="username">Username</label>
+                <input type="text"  name= "username"/>
                 <br />
 
                 <label>Email Address</label>
-                <input type="email" />
+                <input type="email" name="email" />
                 <br />
 
                 <label>Password</label>
-                <input type="password" />
+                <input type="password" name="password1"/>
                 <br />
 
-                <div class="checkbox">
-                    <input id="send_updates" type="checkbox" />
-                    <label for="send_updates">Send me occasional email updates</label>
-                </div>
-
+                <label>Confirm Password</label>
+                <input type="password" name="password2" />
+                <br />
+              
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <div class="one_half last"><a href="#" class="btn btn_red">Register</a></div>
+                    <!-- <div class="one_half last"><a href="register" class="btn btn_red">Register</a></div> -->
+                    <div class="one_half last"> <button type= "submit" class="btn btn_red" > Register</button></div>
+                   
                 </div>
+               
             </form>
         </div>
+        {% endblock %}
     </section>
 </div>
 
@@ -210,7 +210,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" id="guide">
       <div class="row">
         <div class="col-lg-3">
           <div class="service-item first-service">
@@ -218,7 +218,7 @@
             <h4>Step 1</h4>
             <p>Join us by creating an emotively account. </p>
             <div class="text-button">
-              <a href="#">Sign Up/Log In <i class="fa fa-arrow-right"></i></a>
+              <a href="#top">Sign Up/Log In <i class="fa fa-arrow-right"></i></a>
             </div>
            
           </div>
