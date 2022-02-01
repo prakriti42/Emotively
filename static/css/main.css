@@ -153,13 +153,10 @@ body {
 
 ::-moz-selection {
   background: #4b8ef1;
-  color: #fff !important;
+  color: #fff ;
 }
 
 @media (max-width: 991px) {
-  html, body {
-    overflow-x: hidden;
-  }
   .mobile-top-fix {
     margin-top: 30px;
     margin-bottom: 0px;
@@ -207,7 +204,6 @@ body {
 .white-button a {
   display: inline-block !important;
   padding: 10px 20px !important;
-  color: #8c52ff !important;
   text-transform: capitalize;
   font-size: 15px;
   background-color: #fff;
@@ -224,7 +220,7 @@ body {
 
 .white-button a:hover {
   background-color: #4b8ef1;
-  color: #fff !important;
+  color: #fff ;
 }
 
 .text-button a {
@@ -700,6 +696,8 @@ header
   .header-area .container {
     padding: 0px;
   }
+
+  
   .header-area .logo {
     margin-left: 30px;
   }
@@ -905,6 +903,7 @@ Banner Style
   padding: 250px 120px 150px 120px;
   position: relative;
   overflow: hidden;
+  opacity: 1;
 }
 
 .main-banner:after {
@@ -958,9 +957,14 @@ Banner Style
 }
 
 .main-banner .left-content .white-button a {
-  background-color: #4b8ef1;
-  color: #fff !important;
+  color: #4b8ef1;
+  background-color: #fff ;
 }
+
+.main-banner .left-content .white-button a:hover {
+  color: #000 ;
+}
+
 
 /* 
 ---------------------------------------------
@@ -1936,7 +1940,7 @@ footer p a:hover {
 PopUp
 ---------------------------------------------
 */
-
+/* 
 #lean_overlay {
   position: fixed;
   z-index: 100;
@@ -1945,16 +1949,17 @@ PopUp
   width: 100%;
   background: #000;
   display: none;
-}
+} */
 
 .popupContainer {
   position: absolute;
   width: 330px;
   height: auto;
   left: 45%;
-  top: 50px !important;
+  top: 100px !important;
   background: #FFF;
 }
+
 
 .btn {
   padding: 10px 20px;

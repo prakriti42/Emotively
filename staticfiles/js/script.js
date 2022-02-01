@@ -67,3 +67,10 @@ const stopRecording = () => {
     startButton.addEventListener('mouseup', startRecording);
     stopButton.addEventListener('mouseup', stopRecording);
 })();
+
+
+setTimeout(function(){
+    if ($('#msg').length > 0){
+        $('#msg').remove();
+    }
+    },2000);

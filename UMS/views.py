@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.models import User, auth
-
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -27,7 +27,9 @@ def register(request):
 
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
-        return render(request, 'index.html')
+        messages.success(request, 'Account created successfully')
+        login(request,user)
+        return render(request, 'profile.html')
     else:
         return HttpResponse('entered else of regsiter')
 
@@ -39,9 +41,14 @@ def login_view(request):
 
         if user is not None:
             login(request,user)
-            return render(request, 'app.html')
+            messages.success(request, 'Login successful')
+            return redirect( 'app')
+        else:
+             messages.error(request, 'Login Failed.')
+             return render(request, 'index.html')
     else:
-        return HttpResponse('entered else of login')
+        messages.warning(request, 'Please enter username and password')
+        return render(request, 'index.html')
 
 def logout_view(request):
     logout(request)
