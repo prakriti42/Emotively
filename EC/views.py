@@ -5,3 +5,7 @@ from . import views
 def app(request):
     return render(request, 'app.html')
 
+def log(request):
+    return render(request, 'log.html')
+
+    

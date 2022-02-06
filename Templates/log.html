@@ -1,0 +1,296 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://unpkg.com/@webpixels/css@1.1.5/dist/index.css">
+    <!-- <link  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    
+<!-- Dashboard -->
+
+<section class="thedashboard">
+    <div class="d-flex flex-column flex-lg-row h-lg-full ">
+        <!-- Vertical Navbar -->
+        <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+            <div class="container-fluid">
+                <div class="navbar-brand py-lg-2 mb-lg-5 px-lg-5 me-0" href="#" >
+                    <img src="{% static 'images/white-logo.png' %}" alt="..." style="width:70px ; height:70px; margin-left:60px;" >
+                </div>
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="sidebarCollapse">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav" style="margin-top:30px;">
+                       
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-chart-bar"></i> Live Analitycs
+                            </a>
+                        </li>
+                  
+                    <hr class="navbar-divider my-5 opacity-20">
+                        <div style="margin-bottom:250px;">
+    
+                        </div>
+                        
+                    <!-- Push content down -->
+                    <div class="mt-auto"></div>
+                    <!-- User (md) -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">
+                                <i class="fas fa-user"></i> My Account
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Main content -->
+        <div class="h-screen flex-grow-1 overflow-y-lg-auto" >
+            <!-- Header -->
+            <header class="bg-surface-primary border-bottom pt-6">
+                <div class="container-fluid">
+                    <div class="mb-npx">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                                <!-- Title -->
+                                <h1 class="h2 mb-0 ls-tight">Your Emotively Log</h1>
+                            </div>
+                            <!-- Actions -->
+                            <div class="col-sm-6 col-12 text-sm-end">
+                                <div class="mx-n1">
+                                    <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1" style="background-color:  #4b8ef1; border-color:#4b8ef1; border-radius:20px;">
+                                        <span class=" pe-2">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <span>{{user.username}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Nav -->
+                        <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                            <li class="nav-item ">
+                                <a href="#" class="nav-link active" style="color: #4b8ef1;;">All Details</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <!-- Main -->
+            <main class="py-6 bg-surface-secondary">
+                <div class="container-fluid">
+                    <!-- Card stats -->
+                    <div class="row g-6 mb-6">
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Data Collected</span>
+                                            <span class="h3 font-bold mb-0">250+</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                                                <i class="fas fa-database"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="fas fa-arrow-up me-1"></i>13%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">New Users</span>
+                                            <span class="h3 font-bold mb-0">215</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape  text-white text-lg rounded-circle" style="background-color:#4b8ef1;">
+                                                <i class="fas fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="fas fa-arrow-up me-1"></i>30%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Detections</span>
+                                            <span class="h3 font-bold mb-0">141</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                                                <i class="fas fa-digital-tachograph"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-0 text-sm">
+                                        <span class="badge badge-pill bg-soft-danger text-danger me-2">
+                                            <i class="fas fa-arrow-down me-1"></i>-5%
+                                        </span>
+                                        <span class="text-nowrap text-xs text-muted">Since last month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                    <div class="card shadow border-0 mb-7">
+                        <div class="card-header" >
+                            <h5 class="mb-0" style="color:#4b8ef1;">Your Usage History</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-nowrap">
+                                <thead class="thead-light">
+                                    <tr>
+    
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Audio Length</th>
+                                        <th scope="col">Result</th>
+                                        
+                                        <th scope="col"></th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Feb 15, 2021
+                                        </td>
+                                        <td>
+                                            3:00 PM 
+                                        </td>
+                                        <td>
+                                            30 secs
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-lg badge-dot">
+                                                <i class="bg-success"></i>Happy
+                                            </span>
+                                        </td>
+                                
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
+            
+                                        </td>
+                                    </tr>
+                                  
+                                
+                                    <tr>
+                                        <td>
+                                            Feb 15, 2021
+                                        </td>
+                                        <td>
+                                            3:00 PM 
+                                        </td>
+                                        <td>
+                                            30 secs
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-lg badge-dot">
+                                                <i class="bg-danger"></i>Angry
+                                            </span>
+                                        </td>
+                                
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
+            
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Feb 15, 2021
+                                        </td>
+                                        <td>
+                                            3:00 PM 
+                                        </td>
+                                        <td>
+                                            30 secs
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-lg badge-dot">
+                                                <i class="bg-success"></i>Happy
+                                            </span>
+                                        </td>
+                                
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
+            
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            Feb 15, 2021
+                                        </td>
+                                        <td>
+                                            3:00 PM 
+                                        </td>
+                                        <td>
+                                            30 secs
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-lg badge-dot">
+                                                <i class="bg-danger"></i> Sad
+                                            </span>
+                                        </td>
+                                
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
+            
+                                        </td>
+                                    </tr>
+                                   
+                            
+                              
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer border-0 py-5">
+                            <span class="text-muted text-sm">Showing 1 items out of 1 result(s) found</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
