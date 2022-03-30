@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 
+
+def base(request):
+    return render(request, 'try.html')
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -54,3 +57,5 @@ def logout_view(request):
     logout(request)
     return render(request, 'index.html')
 
+def message(request):
+    return render(request, "message.html")

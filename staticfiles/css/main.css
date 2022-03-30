@@ -1596,6 +1596,24 @@ App Section CSS
  
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  z-index: 11001;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+
+
 .audioinputsection {
   flex: 1;
   justify-content:center;
@@ -1636,14 +1654,15 @@ App Section CSS
   border-radius: 123px;
   width: 109px;
   height: 109px;
-  color: red;
-  background-color: #fff;
+  background-color: rgb(9, 109, 9);
+  color: #fff;
   font-style: bold;
+  cursor:pointer;
 }
 #start:hover{
   border: none;
-  background: rgb(214, 46, 46);
-  color: white;
+  color: rgb(9, 109, 9);
+  background-color: white;
 }
 
 #stop{
@@ -1653,12 +1672,12 @@ App Section CSS
   margin-left: 40px;
   width: 99px;
   height: 90px;
-  color: green;
+  color: red;
   transition: all .5s;
 }
 
 #stop:hover{
-  background-color: green;
+  background-color: red;
   color: white;
 }
 #player{
@@ -1695,6 +1714,7 @@ App Section CSS
   
   color: green;
 }
+
 
 /* Edit Profile Section  */
 

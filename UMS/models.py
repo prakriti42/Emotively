@@ -1,6 +1,17 @@
 from django.db import models
 
 
-class Person(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+class Users(models.Model):
+
+    firstname  = models.CharField("First Name" , max_length=120)
+    def __str__(self):
+        return self.name
+    
+class UserDetails(models.Model):
+    
+    surname  = models.CharField("Last Name" , max_length=120)
+    bio = models.TextField(blank=True)
+    email = models.CharField("Email" , max_length=120)
+    # contactNumber = PhoneNumberField()
+    userSince = models.DateField()
+
