@@ -33,6 +33,19 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+<<<<<<< HEAD
+  
+     "phonenumber_field",
+
+    'django.contrib.sites',
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+=======
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,6 +55,29 @@ INSTALLED_APPS = [
     'EC',
 ]
 
+<<<<<<< HEAD
+
+SITE_ID = 1
+
+
+LOGIN_REDIRECT_URL = '/app'
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': '455131305509-sv131m3ke4pku59s5o338jp2814h4pk5.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+
+=======
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -71,6 +107,10 @@ TEMPLATES = [
     },
 ]
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 WSGI_APPLICATION = 'EMOTIVELY.wsgi.application'
 
 
@@ -83,6 +123,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+<<<<<<< HEAD
+AUTHENTICATION_BACKENDS = [
+  
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+=======
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 
 
 # Password validation
@@ -120,8 +168,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+=======
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, 'static'),

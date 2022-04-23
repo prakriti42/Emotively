@@ -17,8 +17,11 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'  %}" rel="stylesheet">
 
 <!--
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 -->
 
     <!-- Additional CSS Files -->
@@ -85,6 +88,51 @@
   <h1>In <a>Audio Disabled</a>, please allow the use of your microphone</h1>
   </div>
 
+<<<<<<< HEAD
+      
+    
+      <div class="mainsection" data-wow-duration="1s" data-wow-delay="0.5s" >
+        <img src="{% static 'images/interactions.png' %}" alt="">
+        <div class="audioinputsection" >
+          <div class="container"  class="gradient-button-detect" >
+            <h1 >Record Your Voice To Detect Current Emotion</h1>
+            <span>Recorder</span>
+            <audio id="recorder" muted hidden></audio>
+            <div class="btn-recorder">
+              <button type="button" id="start" >RECORD</button>
+              <button  type="button" id="stop">STOP</button>
+            </div>
+          </div>
+            <form action="/detect" method="POST">
+              {% csrf_token %}
+            <!-- <span >Saved Recording</span> -->
+            <audio  name="audio" id="player" controls></audio>
+            <div class="inside">
+             <div class="btnarea" >
+               <div class="gradient-button-detect" onclick="detectionresultopen()"> <i class="fa fa-circle" ></i> <button type="submit">Detect My Emotion</button></div>
+             </div>
+            </div>
+          </form>
+          </div>
+        </div>        
+      
+        <div>
+          <div id="modal2" class="popupContainer"  style = "z-index: 1100; left:490px; margin-top:150px; opacity:0" >
+            <div class="popupHeader">
+                <span class="header_title">Detection Result</span>
+                <a class="modal_close" id="modal_close2" href="/app" onclick = "detectionresultclose()"><i class="fa fa-times"></i></a>
+            </div>
+            <section class="popupBody" style="height: 200px;">
+              <img src="{% static 'images/emoticons/happy.svg' %}" alt="" width = "120px" height = "120px">
+              <div class="btnarea" style = "margin-left:70px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
+                <div  ><a style = "font-size:16px; "><i class="fa fa-check" ></i> {{result}} </a></div>
+               </div>
+            </section>
+        </div>
+
+        </div>
+     
+=======
 
     <div >
       
@@ -97,7 +145,7 @@
             <span>Recorder</span>
             <audio id="recorder" muted hidden></audio>
             <div class="btn-recorder">
-              <button  id="start">RECORD</button>
+              <button   id="start">RECORD</button>
               <button id="stop">STOP</button>
               <span>Saved Recording</span>
             </div>
@@ -107,8 +155,7 @@
              <div class="btnarea" onclick="detectionresultopen()">
               <div class="gradient-button-detect" ><a ><i class="fa fa-circle" ></i> Detect My Emotion</a></div>
              </div>
-            </div>
-            
+          
             </div>
           </div>
         </div>        
@@ -126,6 +173,7 @@
         
         </section>
     </div>
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 
     </div>
   

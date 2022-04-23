@@ -1,4 +1,38 @@
+/*
 
+TemplateMo 570 Chain App Dev
+
+https://templatemo.com/tm-570-chain-app-dev
+
+*/
+
+/* ---------------------------------------------
+Table of contents
+------------------------------------------------
+01. font & reset css
+02. reset
+03. global styles
+04. header
+05. banner
+06. features
+07. testimonials
+08. contact
+09. footer
+10. preloader
+11. search
+12. portfolio
+
+--------------------------------------------- */
+/* 
+---------------------------------------------
+font & reset css
+--------------------------------------------- 
+*/
+/* 
+---------------------------------------------
+reset
+--------------------------------------------- 
+*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -101,6 +135,11 @@ img {
   overflow: hidden;
 }
 
+/* 
+---------------------------------------------
+global styles
+--------------------------------------------- 
+*/
 html,
 body {
   background: #fff;
@@ -1583,8 +1622,11 @@ App Section CSS
   height:400px;
   width:200px;
   z-index: 2;
+<<<<<<< HEAD
+=======
   background: rgb(19,175,240);
   background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgb(124, 237, 252) 100%);
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
   border-radius:50px;
   position: relative;
   font-family:  'Roboto', sans-serif;
@@ -1611,6 +1653,22 @@ App Section CSS
 }
 
 #start{
+<<<<<<< HEAD
+    border: none;
+    border-radius: 0px;
+    width: 200px;
+    height: 50px;
+    background-color: rgb(9, 109, 9);
+    color: #fff;
+    cursor: pointer;
+}
+#start:hover{
+  transform: scale(1.5);
+}
+
+#stop{
+  background-color: red;
+=======
  border: none;
   border-radius: 123px;
   width: 109px;
@@ -1618,6 +1676,7 @@ App Section CSS
   background-color: rgb(9, 109, 9);
   color: #fff;
   font-style: bold;
+  cursor:pointer;
 }
 #start:hover{
   border: none;
@@ -1628,17 +1687,28 @@ App Section CSS
 #stop{
   background-color: #fff;
   border: none;
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
   border-radius: 5px;
   margin-left: 40px;
   width: 99px;
   height: 90px;
+<<<<<<< HEAD
+  color: white;
+  border: none;
+  transition: transform .5s;
+=======
   color: red;
   transition: all .5s;
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 }
 
 #stop:hover{
   background-color: red;
   color: white;
+<<<<<<< HEAD
+  transform: scale(1.5);
+=======
+>>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 }
 #player{
   position: absolute;
