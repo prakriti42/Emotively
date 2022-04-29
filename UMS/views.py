@@ -1,22 +1,15 @@
 from django.shortcuts import render , redirect
-<<<<<<< HEAD
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login , logout
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Profile , Messages
 from .forms import ProfileForm
+from datetime import datetime
+from django.core.files.storage import FileSystemStorage
 
-=======
-from django.http import HttpResponse
-from django.contrib.auth import authenticate, login , logout
-from django.contrib.auth.models import User, auth
-from django.contrib import messages
-
-
-def base(request):
-    return render(request, 'try.html')
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -24,7 +17,6 @@ def index(request):
 def profile(request):
     #check if the user has logged in
     if request.user.is_authenticated:
-<<<<<<< HEAD
         data = Profile.objects.get(user=request.user)
         return render(request, 'profile.html' , {'data' : data})
     else:
@@ -37,16 +29,6 @@ def profile(request):
 # Views 
 
 def register(request):
-=======
-        return render(request, 'profile.html')
-    else:
-        return HttpResponse('You are not logged in')
-    return render(request, 'index.html')
-
-# Views 
-def register(request):
-
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
@@ -55,19 +37,12 @@ def register(request):
 
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
-<<<<<<< HEAD
         Profile(user=user, email=email).save()
         messages.success(request, 'Account created successfully')
       #  messages.success(request, 'Sign Up successful. Time to complete your profile.')
         return HttpResponseRedirect("/")
     else:
         messages.error(request, 'Please fill in all the fields correctly.')
-=======
-        messages.success(request, 'Account created successfully')
-        login(request,user)
-        return render(request, 'profile.html')
-    else:
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
         return HttpResponse('entered else of regsiter')
 
 def login_view(request):
@@ -78,23 +53,15 @@ def login_view(request):
 
         if user is not None:
             login(request,user)
-<<<<<<< HEAD
             messages.success(request, 'Login successful.')
             return redirect(profile)
         else:
              messages.info(request, 'User not found.')           
-=======
-            messages.success(request, 'Login successful')
-            return redirect( 'app')
-        else:
-             messages.error(request, 'Login Failed.')
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
              return render(request, 'index.html')
     else:
         messages.warning(request, 'Please enter username and password')
         return render(request, 'index.html')
 
-<<<<<<< HEAD
 
 def logout_view(request):
     logout(request)
@@ -104,35 +71,35 @@ def logout_view(request):
 
 def profile_update(request):
 
-    if request.method == 'GET' and 'q' in request.GET:
-        if query is None:
-            return HttpResponse('No results found')
-        else:
-            first_name = request.GET['first_name']
-            last_name = request.GET['last_name']
-            email = request.GET['email']
-            print("The first name is "+first_name)
-            # user = request.user
-            request.user.first_name = first_name
-            request.user.last_name = last_name
-            request.user.email = email
-            request.user.save()
-            messages.success(request, 'Profile Updated Successfully')
-            Profile(user= request.user,firstname=first_name, lastname=last_name, email=email).save()
-            request.user.save()
-            messages.success(request, 'Profile Updated Successfully')
-            data = Profile.objects.get(user=request.user)
-            return render(request, "profile.html", {'data' : data})
-    else : 
-        messages.INFO(request, 'Please fill in all the fields correctly.')
-        return render(request, "profile.html",{'data' : data})
-    messages.error(request, "Failed to Update Profile Details.")
-    return render(request, "profile.html", {'data' : data})
-=======
-def logout_view(request):
-    logout(request)
-    return render(request, 'index.html')
+    if request.method == 'POST':
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            email = request.POST['email']
+            if request.FILES['dp'] is not None or '': 
+                dp = request.FILES['dp']
+                fs = FileSystemStorage()
+                filename = fs.save(dp.name, dp)
+                uploaded_file_url = fs.url(filename)
+                print("uploaded file url",uploaded_file_url)
+                Profile.objects.filter(pk=request.user).update(firstname=first_name, lastname=last_name, dp = dp, email=email)
+                messages.success(request, 'Profile Updated Successfully')
+            else :
+                Profile.objects.filter(pk=request.user).update(firstname=first_name, lastname=last_name, email=email)
+                messages.success(request, 'Profile Updated Successfully')
+            data = Profile.objects.filter(user = request.user)
+    return redirect(to='/profile' , data = data)
 
-def message(request):
-    return render(request, "message.html")
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
+
+def sendFeedBacks(request):
+    if request.method == 'POST':
+        message = request.POST['message']
+        feedback = Messages(message=message)
+        email_body = "Message: "+message +"\n" + "At: "+ str(datetime.now())
+        feedback.save()
+        # send_mail("Emotively", email_body , "Anonymous", ["regmi.prakriti24@gmail.com"])
+        messages.success(request, 'Concerns and Queries Sent To Admin  Successfully')
+        
+        # messages.error(request, 'Failed to send Feedback Via Email')
+        return redirect('/')
+   
+    return redirect(to='/')

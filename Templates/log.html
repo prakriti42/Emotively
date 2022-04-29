@@ -5,11 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>User Log</title>
-=======
-    <title>Document</title>
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -26,11 +22,7 @@
 <section class="thedashboard">
     <div class="d-flex flex-column flex-lg-row h-lg-full ">
         <!-- Vertical Navbar -->
-<<<<<<< HEAD
         <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical" style="overflow: hidden;">
-=======
-        <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
             <div class="container-fluid">
                 <div class="navbar-brand py-lg-2 mb-lg-5 px-lg-5 me-0" href="#" >
                     <img src="{% static 'images/white-logo.png' %}" alt="..." style="width:70px ; height:70px; margin-left:60px;" >
@@ -102,17 +94,11 @@
                 </div>
             </header>
             <!-- Main -->
-<<<<<<< HEAD
             <div class="log">
             <main class="py-6 bg-surface-secondary">
                 <div class="container-fluid">
                     <!-- Card stats -->
                     
-=======
-            <main class="py-6 bg-surface-secondary">
-                <div class="container-fluid">
-                    <!-- Card stats -->
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
                     <div class="row g-6 mb-6">
                         <div class="col-xl-3 col-sm-6 col-12">
                             <div class="card shadow border-0">
@@ -120,13 +106,9 @@
                                     <div class="row">
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Data Collected</span>
-<<<<<<< HEAD
-                                            {%block content%}
+                                          
                                             <span class="h3 font-bold mb-0">{{totalAudio}}+</span>
-                                            {%endblock%}
-=======
-                                            <span class="h3 font-bold mb-0">250+</span>
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
+                                           
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
@@ -143,21 +125,14 @@
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
                         
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
                         <div class="col-xl-3 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">New Users</span>
-<<<<<<< HEAD
                                             <span class="h3 font-bold mb-0">{{users}}</span>
-=======
-                                            <span class="h3 font-bold mb-0">215</span>
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape  text-white text-lg rounded-circle" style="background-color:#4b8ef1;">
@@ -174,17 +149,14 @@
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
                        
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
                         <div class="col-xl-3 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
                                             <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Detections</span>
-                                            <span class="h3 font-bold mb-0">141</span>
+                                            <span class="h3 font-bold mb-0">{{detection_count}}</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
@@ -213,7 +185,6 @@
                                     <tr>
     
                                         <th scope="col">Date</th>
-                                        <th scope="col">Time</th>
                                         <th scope="col">Audio Length</th>
                                         <th scope="col">Result</th>
                                         
@@ -221,7 +192,6 @@
                                        
                                     </tr>
                                 </thead>
-<<<<<<< HEAD
                                
                                 <tbody>
                                     
@@ -231,9 +201,7 @@
                                         <td>
                                            {{sample.dateofUpload}}
                                         </td>
-                                        <td>
-                                            {{sample.timeToUpload}}
-                                        </td>
+            
                                         <td>
                                             {{sample.duration}}
                                         </td>
@@ -244,97 +212,17 @@
                                               <i class="bg-success"> </i> {{sample.Tag}}
                                               {% elif sample.Tag == "Angry" %}
                                               <i class="bg-danger"> </i> {{sample.Tag}}
-
+                                              {% elif sample.Tag == "Untagged" %}
+                                              <i class="bg-danger"> </i> {{sample.Tag}}
+                                              {% elif sample.Tag == "Neutral" %}
+                                              <i class="bg-success"> </i> {{sample.Tag}}
                                               {% endif %}
                                                
-=======
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Feb 15, 2021
-                                        </td>
-                                        <td>
-                                            3:00 PM 
-                                        </td>
-                                        <td>
-                                            30 secs
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-lg badge-dot">
-                                                <i class="bg-success"></i>Happy
                                             </span>
                                         </td>
                                 
                                         <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
-            
-                                        </td>
-                                    </tr>
-                                  
-                                
-                                    <tr>
-                                        <td>
-                                            Feb 15, 2021
-                                        </td>
-                                        <td>
-                                            3:00 PM 
-                                        </td>
-                                        <td>
-                                            30 secs
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-lg badge-dot">
-                                                <i class="bg-danger"></i>Angry
-                                            </span>
-                                        </td>
-                                
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
-            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Feb 15, 2021
-                                        </td>
-                                        <td>
-                                            3:00 PM 
-                                        </td>
-                                        <td>
-                                            30 secs
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-lg badge-dot">
-                                                <i class="bg-success"></i>Happy
-                                            </span>
-                                        </td>
-                                
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
-            
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            Feb 15, 2021
-                                        </td>
-                                        <td>
-                                            3:00 PM 
-                                        </td>
-                                        <td>
-                                            30 secs
-                                        </td>
-                                        <td>
-                                            <span class="badge badge-lg badge-dot">
-                                                <i class="bg-danger"></i> Sad
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
-                                            </span>
-                                        </td>
-                                
-                                        <td class="text-end">
-<<<<<<< HEAD
-                                            <a href="{{sample.recording.url}}" target="_blank" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
+                                            <a href="{{sample.audio_file.url}}" target="_blank" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
         
                                         </td>
                                     </tr>
@@ -347,30 +235,12 @@
                         </div>
                         <div class="card-footer border-0 py-5">
                             <span class="text-muted text-sm">Showing result(s) found</span>
-=======
-                                            <a href="#" class="btn btn-sm btn-neutral" style=" border-radius:20px;">Play Audio Sample</a>
-            
-                                        </td>
-                                    </tr>
-                                   
-                            
-                              
-                                
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card-footer border-0 py-5">
-                            <span class="text-muted text-sm">Showing 1 items out of 1 result(s) found</span>
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-<<<<<<< HEAD
         </div>
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
     </div>
 </section>
 

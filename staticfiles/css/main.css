@@ -1622,30 +1622,23 @@ App Section CSS
   height:400px;
   width:200px;
   z-index: 2;
-<<<<<<< HEAD
-=======
-  background: rgb(19,175,240);
-  background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgb(124, 237, 252) 100%);
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
   border-radius:50px;
   position: relative;
   font-family:  'Roboto', sans-serif;
  
 }
 
-.btn-recorder{
+/* .btn-recorder{
   position: absolute;
   top: 10%;
   left: 20%;
-
-}
+} */
 
 .btn-recorder button {
-  display: inline-block !important;
   padding: 10px 20px !important;
   text-transform: capitalize;
   font-size: 14px;
-  margin-right: 20px;
+  margin-right: 40px;
   margin-left: 40px;
   font-weight: 500 !important;
   letter-spacing: 0.3px !important;
@@ -1653,9 +1646,10 @@ App Section CSS
 }
 
 #start{
-<<<<<<< HEAD
     border: none;
     border-radius: 0px;
+    margin-top:50px;
+    margin-left: 140px;
     width: 200px;
     height: 50px;
     background-color: rgb(9, 109, 9);
@@ -1668,70 +1662,45 @@ App Section CSS
 
 #stop{
   background-color: red;
-=======
- border: none;
-  border-radius: 123px;
-  width: 109px;
-  height: 109px;
-  background-color: rgb(9, 109, 9);
-  color: #fff;
-  font-style: bold;
-  cursor:pointer;
-}
-#start:hover{
-  border: none;
-  color: rgb(9, 109, 9);
-  background-color: white;
-}
-
-#stop{
-  background-color: #fff;
-  border: none;
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
-  border-radius: 5px;
-  margin-left: 40px;
-  width: 99px;
-  height: 90px;
-<<<<<<< HEAD
+  border-radius: 0px;
+  margin-top:50px;
+  margin-left: 50px;
+  width: 200px;
+  height: 50px;
   color: white;
   border: none;
   transition: transform .5s;
-=======
-  color: red;
-  transition: all .5s;
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 }
 
 #stop:hover{
   background-color: red;
   color: white;
-<<<<<<< HEAD
   transform: scale(1.5);
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 }
+
 #player{
   position: absolute;
-  top: 50%;
-  left: 20%;
-  color: #fff;
-  
+  top:50%;
+  left:15%;
+  z-index: 100009;
 }
-.inside .btnarea{
+
+.btnarea{
  
   position: absolute;
   left:34%;
   top:75%;
   cursor:pointer;
   z-index: 3;
-  color: #4b8ef1;
+  color: white;
 }
 
-.gradient-button-detect a{
+.gradient-button-detect{
   display: inline-block !important;
   padding: 10px 20px !important;
-  background-color: #fff !important;
+  background-color: #4b8ef1;
   text-transform: capitalize;
+  margin-left: 50px;
   font-size: 15px;
   border-radius: 23px;
   font-weight: 500 !important;
@@ -1740,9 +1709,9 @@ App Section CSS
 }
 
 
-.btnarea :hover{
-  
-  color: green;
+.gradient-button-detect:hover{
+  background-color: rgb(14, 135, 14);
+  color: #ffffff;
 }
 
 
@@ -1752,7 +1721,53 @@ App Section CSS
 	padding: 20px;
   margin-left: 130px;
   overflow-y: hidden;
+  display: flex;
+  width: 200px;
+  flex-direction: column;
 }
+
+/* 
+.card {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin-top: -750px;
+    background-color: #4b8ef1;
+    position: fixed;
+}
+
+.card .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .text img{
+    height: 150px;
+    border-radius: 50%;
+  margin-bottom:10px;
+}
+
+.card .text h6{
+    font-size: 30px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.card .text p:nth-of-type(1){
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+    margin-top: -5px;
+}
+
+.card .text p:nth-of-type(2){
+    margin: 10px;
+    width: 90%;
+    text-align: center;
+} */
 
 .profilecontainer .title {
   margin-top: 80px;
@@ -1805,14 +1820,12 @@ App Section CSS
 }
 
 
-
-
-
 @media screen and (min-width: 768px) {
 	.editprofilesection {
 		align-items: center;
 		justify-content: center;
     margin-left: 100px;
+    margin-top: 20px;
 	}
 
 	.profilecontainer {
@@ -1824,7 +1837,8 @@ App Section CSS
 @media screen and (min-width: 1024px) {
 	.profilecontainer {
 		max-width: 80%;
-		width: 100%;
+		width: 50%;
+    margin-left: 500px;
 	}
 
 

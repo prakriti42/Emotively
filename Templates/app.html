@@ -15,15 +15,14 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'  %}" rel="stylesheet">
-
 <!--
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 -->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
+
+<!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.7.2/dist/js/uikit-icons.min.js"></script>
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -36,6 +35,27 @@
   </head>
 
 <body>
+ 
+  <div class="mapaudio">
+    <svg preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+
+            <mask id="mask">
+                <g id="maskGroup">
+              </g>
+            </mask>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#7fca7b;stop-opacity:1 "/>
+                <stop offset="20%" style="stop-color:#81b2fc;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#fdc3c1;stop-opacity:.3" />
+                <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+            </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
+    </svg>
+    
+<h1>In <a>Audio Disabled</a>, please allow the use of your microphone</h1>
+</div>
 
      <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
@@ -64,118 +84,92 @@
   
   </header>
   <!-- ***** Header Area End ***** -->
-
+ 
   <div >
-
-    <div class="mapaudio">
-      <svg preserveAspectRatio="none" id="visualizer" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <defs>
   
-              <mask id="mask">
-                  <g id="maskGroup">
-                </g>
-              </mask>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style="stop-color:#4b8ef1;stop-opacity:1" />
-                  <stop offset="20%" style="stop-color:#4b8ef1;stop-opacity:1" />
-                  <stop offset="50%" style="stop-color:#4b8ef1;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#4b8ef1;stop-opacity:1" />
-              </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#gradient)" mask="url(#mask)"></rect>
-      </svg>
-  
-  <h1>In <a>Audio Disabled</a>, please allow the use of your microphone</h1>
-  </div>
-
-<<<<<<< HEAD
-      
-    
       <div class="mainsection" data-wow-duration="1s" data-wow-delay="0.5s" >
         <img src="{% static 'images/interactions.png' %}" alt="">
         <div class="audioinputsection" >
-          <div class="container"  class="gradient-button-detect" >
-            <h1 >Record Your Voice To Detect Current Emotion</h1>
-            <span>Recorder</span>
-            <audio id="recorder" muted hidden></audio>
-            <div class="btn-recorder">
+          {% for message in messages %}
+          <div class="alert alert-{{message.tags}}" role="alert" style="height:50px">
+            <strong> {{message}} </strong> 
+            </div>
+          {% endfor %}
+          <form action="/detect" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="container">
+            
+            <div class="form-group" style="width: 250px; height:80px; margin-left:250px; margin-top:20px;">
+              <label for="audio" > <span style="background-color:#4b8ef1; color:#ffffff ;padding:5px; z-index:10001;">Upload Audio File</span></label>
+              <input  type="file" name="audio" style="font-size:14px; margin-top:-15px; border-top:none; border-radius:0px;">
+            </div>
+        
+
+            <h1 style="color:#4b8ef1; margin-left:55px; margin-top:-37px;" > <strong>Record Your Voice To Detect Current Emotion </strong></h1>
+            <audio  name= "audio" id="recorder" muted hidden></audio>
+            <div class="btn-recorder" style="display:flex; margin-top:20px;">
               <button type="button" id="start" >RECORD</button>
               <button  type="button" id="stop">STOP</button>
             </div>
           </div>
-            <form action="/detect" method="POST">
-              {% csrf_token %}
-            <!-- <span >Saved Recording</span> -->
-            <audio  name="audio" id="player" controls></audio>
+
+          <audio  name="audio" id="player" controls style="margin-top: 40px; margin-left:120px;color:#4b8ef1"></audio> 
+           
+            <div class="gradient-button-detect" style="margin-left: 420px;margin-top:105px; background-color:yellow"> <i class="fa fa-check" ></i> 
+              <button  style="background-color:yellow; border:none;" type="submit" onclick="submit()">Submit Audio</button>
+            </div> 
             <div class="inside">
-             <div class="btnarea" >
-               <div class="gradient-button-detect" onclick="detectionresultopen()"> <i class="fa fa-circle" ></i> <button type="submit">Detect My Emotion</button></div>
+             <div class="btnarea"  >
+               <div class="gradient-button-detect" style="margin-top: 25px;margin-left:-20px;" onclick="detectionresultopen()"> <i class="fa fa-circle" ></i> <a href="/detect" type="submit" style="color:white">Detect My Emotion</a></div>
              </div>
+            </form>
+         
             </div>
-          </form>
           </div>
         </div>        
-      
+    
         <div>
           <div id="modal2" class="popupContainer"  style = "z-index: 1100; left:490px; margin-top:150px; opacity:0" >
             <div class="popupHeader">
                 <span class="header_title">Detection Result</span>
                 <a class="modal_close" id="modal_close2" href="/app" onclick = "detectionresultclose()"><i class="fa fa-times"></i></a>
             </div>
+         
             <section class="popupBody" style="height: 200px;">
-              <img src="{% static 'images/emoticons/happy.svg' %}" alt="" width = "120px" height = "120px">
-              <div class="btnarea" style = "margin-left:70px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
-                <div  ><a style = "font-size:16px; "><i class="fa fa-check" ></i> {{result}} </a></div>
+              {% if result == "Anger" %}
+              <img src="{% static 'images/emoticons/angry.svg' %}" alt="" width = "120px" height = "120px">
+              <div class="btnarea" style = "margin-left:20px; margin-top:15px;color:#4b8ef1; left:20px; cursor:none;">
+                <div  ><a style = "font-size:16px; "><i class="fa fa-dot" ></i> Hey {{request.user}}, Why are you <strong> Angry? </strong> </a></div>
                </div>
+               {% elif result == "Fear" %}
+               <img src="{% static 'images/emoticons/fear.svg' %}" alt="" width = "120px" height = "120px">
+               <div class="btnarea" style = "margin-left:70px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
+                 <div  ><a style = "font-size:16px; "><i class="fa fa-check" ></i> You sound fearful at the moment.</a></div>
+                </div>
+                {% elif result == "Happy" %}
+               <img src="{% static 'images/emoticons/fear.svg' %}" alt="" width = "120px" height = "120px">
+               <div class="btnarea" style = "margin-left:70px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
+                 <div  ><a style = "font-size:16px; "><i class="fa fa-check" ></i> You sound fearful at the moment.</a></div>
+                </div>
+                {% elif result == "Sad" %}
+                <img src="{% static 'images/emoticons/fear.svg' %}" alt="" width = "120px" height = "120px">
+                <div class="btnarea" style = "margin-left:30px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
+                  <div  ><a style = "font-size:16px; "><i class="fa fa-check" ></i> Hey {{request.user}}, Whats the matter? You sound sad, friend.</a></div>
+                 </div>
+                {% else %}
+               <img src="{% static 'images/emoticons/loadergif' %}" alt="" width = "120px" height = "120px">
+               <div class="btnarea" style = "margin-left:70px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
+                 <div  ><a style = "font-size:16px; "><i class="fa fa-dot" ></i> Wait a moment</a></div>
+                </div>
+              {% endif %}
+
             </section>
         </div>
 
         </div>
-     
-=======
-
-    <div >
-      
-      {% comment %} message from backend {% endcomment %}
-      <div class="mainsection" data-wow-duration="1s" data-wow-delay="0.5s" >
-        <img src="{% static 'images/interactions.png' %}" alt="">
-        <div class="audioinputsection" >
-          <div class="container" >
-            <h1>Record Your Voice To Detect Current Emotion</h1>
-            <span>Recorder</span>
-            <audio id="recorder" muted hidden></audio>
-            <div class="btn-recorder">
-              <button   id="start">RECORD</button>
-              <button id="stop">STOP</button>
-              <span>Saved Recording</span>
-            </div>
-            
-	          <audio id="player" controls></audio>
-            <div class="inside">
-             <div class="btnarea" onclick="detectionresultopen()">
-              <div class="gradient-button-detect" ><a ><i class="fa fa-circle" ></i> Detect My Emotion</a></div>
-             </div>
-          
-            </div>
-          </div>
-        </div>        
-      </div> 
-      <div id="modal2" class="popupContainer"  style = "z-index: 1100; left:750px; margin-top:100px; opacity:0" >
-        <div class="popupHeader">
-            <span class="header_title">Detection Result</span>
-            <a class="modal_close" id="modal_close2" onclick = "detectionresultclose()"><i class="fa fa-times"></i></a>
-        </div>
-        <section class="popupBody" style="height: 200px;">
-          <img src="{% static 'images/emoticons/happy.svg' %}" alt="" width = "120px" height = "120px">
-          <div class="btnarea" style = "margin-left:70px; margin-top:20px;color:#4b8ef1; left:20px; cursor:none;">
-            <div  ><a style = "font-size:16px; "><i class="fa fa-check" ></i> You seem happy </a></div>
-           </div>
-        
-        </section>
+    
     </div>
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
-
-    </div>
+   
   
     </div>
 
@@ -266,6 +260,32 @@
     }
     
     window.voiceRecorder = new VoiceRecorder()
+
+
+function submit(){
+
+      const reader = new FileReader();
+      reader.readAsDataURL(audio.audioBlob);
+      reader.onload = () => {
+        const base64AudioMessage = reader.result.split(',')[1];
+        fetch('/save/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json','X-CSRFToken':csrf },
+          body: JSON.stringify({ audio: base64AudioMessage,title:title })
+        });
+      };
+      console.log("Submit function Triggered")
+  }
+
+
+
+    $(document).ready(function() {
+          // messages timeout for 10 sec 
+          setTimeout(function() {
+              $('.message').fadeOut('slow');
+          }, 1000); // <-- time in milliseconds, 1000 =  1 sec
+    });
+  
     
   </script>
 

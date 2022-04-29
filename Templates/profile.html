@@ -73,135 +73,71 @@
   <!-- ***** Header Area End ***** -->
 
 <section>
-<<<<<<< HEAD
 <div class="container">
   
     <div class="editprofilesection">
-   
-     
       <div class="profilecontainer">
-        <div class="message">
-
-          <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert"  style=" margin-top:70px; margin-bottom: -70px; z-index : 10001;">
-          <strong> {{message}} </strong> 
-          </div>
-        </div>
-         
+       
             <h1 class="title">Update Profile </h1>
-            <form action="{% url 'update' %}" method="GET">
+
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} " role="alert"  style=" z-index : 10001;">
+            <strong> {{message}} </strong> 
+            </div>
+            {% endfor %} 
+            <form action="{% url 'update' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="grid">
-             
                 <div class="form-group a">
                     <label >First Name</label>
-                    <div contentEditable="true" type="text"> <input type="text" name="first_name" style="display: none;">
-                     {{data.firstname}} </div> 
+                   <input type="text" name="first_name" value={{data.firstname}} >
                 </div>
         
                 <div class="form-group b">
                     <label for="last-name">Last name</label>
-                    <div contentEditable="true" type="text"> <input type="text" name="last_name" id="" style="display: none;"> {{data.lastname}}</div>
+                    <input type="text" name="last_name" id="" value={{data.lastname}}> 
                 </div>
         
                 <div class="form-group email-group">
                     <label for="email">Email Address</label>
-                    <div contentEditable="true" type="text" > <input type="text" name="email" id="" style="display: none;"> {{data.email}} </div>
+                    <input type="text" name="email" id="" value={{data.email}}> 
                 </div>
         
                 <div class="form-group phone-group">
                     <label for="phone">Contact Number</label>
-                    <div contentEditable="true"  type="text"><input type="text" name="contactnumber" id="" style="display: none;">{{data.contactNumber}}</div>
+                    <input type="text" name="contactnumber" id="" value= {{data.contactNumber}}>
                 </div>
-        
-                <div class="textarea-group">
-                    <label for="bio">Profile Picture</label>
-                    <div class="profileavatar" style="margin-left: 20px;">
-                      <img src="{{data.dp.url}}" alt="" width="20px" height="180px" style="border:1px solid gray; border-radius:50%">
-                    </div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="address"> Total Detections </label>
-                    <div contentEditable="true" id="address" type="text"><input type="text" name="totaldetections" id="" style="display: none;">{{data.totalDetection}}</div>
-                </div>
-        
-                <div class="form-group">
-                    <label for="age">User Since</label>
-                    <div id="age" type="text">{{request.user.date_joined}}</div>
-                  
-                </div>
-        
-                <div class="form-group">
-                    <label for="zip">Account Status</label>
-                    <div contentEditable="true" id="age" type="text">{{request.user.is_active}}</div>
-                </div>
-            </div>
-        
-            <div class="gradient-button" style="margin-top: -80px; margin-left:420px; cursor : pointer;"><button type="submit" style="background: none;outline:none;border:none;"><a><i class="fa fa-save"></i>  Save Changes</a></button></div>
-          </form>
-        </div>
-     
-=======
- 
-    <div class="editprofilesection">
-        <div class="profilecontainer">
 
-            <h1 class="title">Update Profile </h1>
-        
-            <div class="grid">
-                <div class="form-group a">
-                    <label for="name">Name</label>
-                    <input id="name" type="text">
-                </div>
-        
-                <div class="form-group b">
-                    <label for="first-name">Surname</label>
-                    <input id="first-name" type="text">
-                </div>
-        
-                <div class="form-group email-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="text" placeholder="{{user.email}}">
-                </div>
-        
-                <div class="form-group phone-group">
-                    <label for="phone">Contact Number (mobile)</label>
-                    <input id="phone" type="text">
-                </div>
-        
-                <div class="textarea-group">
-                    <label for="bio">Bio</label>
-                    <textarea id="bio"></textarea>
-                </div>
-        
                 <div class="form-group">
-                    <label for="address">Country</label>
-                    <input id="address" type="text">
-                </div>
-        
-                <div class="form-group">
-                    <label for="city">User Since</label>
-                    <input id="city" type="text">
-                </div>
-        
-                <div class="form-group">
-                    <label for="zip">Account Verified</label>
-                    <input id="zip" type="text">
-                </div>
+                  <label for="image">Change Avatar Picture</label>
+                  <input id="id_image" type="file" name="dp" value="{{dp.name}">
+              </div>
+      
             </div>
-        
-            <div class="gradient-button" style="margin-top: -80px; margin-left:420px;"><a><i class="fa fa-save"></i>  Save Changes</a></div>
+            <div class="gradient-button" style="margin-top: 20px; margin-left:420px; margin-bottom:20px; cursor : pointer;"><button type="submit" style="background: none;outline:none;border:none;"><a><i class="fa fa-save"></i>  Save Changes</a></button></div>
+          </form>
+          <div class= "profilecard">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+                    <div class="pcard">
+                        <div class="text">
+                            <img src="{{data.dp.url}}" alt="Profile image not found">
+                            <h6>{{data.firstname}} {{data.lastname}}</h6>
+                            <i> Total Detections : {{data.totalDetection}} </i>
+                            <p style="color: aliceblue;">
+                                <strong> Email Address : {{data.email}} </strong> <br>
+                                <strong> Contact Number : {{data.contactNumber}} </strong> <br>
+                                <strong> User Since : {{request.user.date_joined}} </strong> <br>
+                            </p>
+                        </div>
+                    </div>
+              </div>
         </div>
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
+       
+     
     </div>
 
 </section>
 
 
-<<<<<<< HEAD
-=======
- 
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
   <!-- Scripts -->
   <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
   <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -210,18 +146,15 @@
   <script src="{% static 'js/imagesloaded.js' %}"></script>
   <script src="{% static 'js/popup.js' %}"></script>
   <script src="{% static 'js/custom.js' %}"></script>
-<<<<<<< HEAD
 
   <script>
     $(document).ready(function() {
         // messages timeout for 10 sec 
         setTimeout(function() {
             $('.message').fadeOut('slow');
-        }, 3000); // <-- time in milliseconds, 1000 =  1 sec
+        }, 1000); // <-- time in milliseconds, 1000 =  1 sec
     });
   </script>
    
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 </body>
 </html>

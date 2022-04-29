@@ -1,13 +1,12 @@
 from django.urls import  path
 from . import views
-
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
     path('app/', views.app, name='app'),
     path('log/', views.log, name='log'),
-<<<<<<< HEAD
     path('save' , views.saveAudio , name='save'),
     path('detect' , views.getPrediction , name='detect'),
-=======
-    
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

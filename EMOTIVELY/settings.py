@@ -33,19 +33,18 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-<<<<<<< HEAD
   
      "phonenumber_field",
 
     'django.contrib.sites',
+    
     
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -55,7 +54,6 @@ INSTALLED_APPS = [
     'EC',
 ]
 
-<<<<<<< HEAD
 
 SITE_ID = 1
 
@@ -76,8 +74,6 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -107,10 +103,6 @@ TEMPLATES = [
     },
 ]
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 WSGI_APPLICATION = 'EMOTIVELY.wsgi.application'
 
 
@@ -123,14 +115,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-<<<<<<< HEAD
 AUTHENTICATION_BACKENDS = [
   
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 
 
 # Password validation
@@ -168,15 +157,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-<<<<<<< HEAD
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-=======
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
-
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'prakuregmi@gmail.com'
+EMAIL_HOST_PASSWORD = 'Munuprakuaayu1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = False
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, 'static'),
 ]
@@ -186,3 +173,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

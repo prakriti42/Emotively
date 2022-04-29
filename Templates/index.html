@@ -1,10 +1,7 @@
 
 {%load static %}
-<<<<<<< HEAD
 
 {%load socialaccount %}
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,11 +80,8 @@
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
-<<<<<<< HEAD
 
  
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
   
   <div id="modal" class="popupContainer" style="display:none;">
     <div class="popupHeader">
@@ -95,23 +89,15 @@
         <a class="modal_close" id="modal_close"><i class="fa fa-times"></i></a>
     </div>
 
-<<<<<<< HEAD
     
 
-=======
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
     <section class="popupBody">
         {% block main %}
         <!-- Social Login -->
         <div class="social_login">
-<<<<<<< HEAD
           {% csrf_token %}
             <div class="">
                 <a href="{% provider_login_url 'google' method='oauth2' %}" class="social_box google">
-=======
-            <div class="">
-                <a href="#" class="social_box google">
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
                     <span class="icon"><i class="fab fa-google-plus"></i></span>
                     <span class="icon_title">Connect with Google</span>
                 </a>
@@ -150,11 +136,7 @@
 
         <!-- Register Form -->
         <div class="user_register">
-<<<<<<< HEAD
             <form action= "register/" method="POST">
-=======
-            <form action= "register" method="POST">
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
               {% csrf_token %} 
                 <label for="username">Username</label>
                 <input type="text"  name= "username"/>
@@ -171,14 +153,6 @@
                 <label>Confirm Password</label>
                 <input type="password" name="password2" />
                 <br />
-<<<<<<< HEAD
-=======
-                {% include  'messages.html' %}
-                
-                {% block alert-content %}
-
-                {% endblock alert-content %}
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
 
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
@@ -193,36 +167,20 @@
     </section>
 </div>
 
-<<<<<<< HEAD
 
 
 <section id="content">
 
   <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
 
-   
-    
     <div class="container">
-      <div class="message">
+      <div class="messages">
         {% for message in messages %}
         <div class="alert alert-{{message.tags}} " role="alert"  style=" margin-top:-120px; z-index : 10001;">
         <strong> {{message}} </strong> 
         </div>
         {% endfor %}
       </div>
-=======
-<section id="content">
-  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-
-    
-    {% include  'messages.html' %}
-                
-    {% block content %}
-
-    {% endblock content %}
-    
-    <div class="container">
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
@@ -293,16 +251,13 @@
             <div class="icon"></div>
             <h4>Step 3 </h4>
             <p>Get to know the AI powered emotion detection result.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="service-item fourth-service">
             <div class="icon"></div>
             <h4>Step 4</h4>
-            <p>Help build the system stronger by sending leaving us your feedbacks and data upon your approval.</p>
+            <p>Help build the system stronger by sending leaving us your feedbacks.</p>
             <div class="text-button">
             
             </div>
@@ -319,7 +274,7 @@
           <div class="section-heading">
             <h4>About <em>What We Do</em> &amp; Why We Do</h4>
             <img src="{% static 'images/heading-line-dec.png' %}" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+            <p>With Emotively, the acosutic features of the users are evaluated and analyzed to study its influence in their mood.</p>
           </div>
           <div class="row">
             <div class="col-lg-6">
@@ -347,7 +302,7 @@
               </div>
             </div>
             <div class="col-lg-12">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor idunte ut labore et dolore adipiscing  magna.</p>
+              <p>More to that, Emotively stand to be a dynamic web-application open for development as per the requirments.</p>
             
             </div>
           </div>
@@ -371,11 +326,12 @@
           </div>
         </div>
         <div class="col-lg-6 offset-lg-3">
-          <form id="search" action="#" method="GET">
+          <form id="search" action="sendmsg/" method="POST">
+            {%csrf_token%}
             <div class="row">
               <div class="col-lg-6 col-sm-6">
                 <fieldset>
-                  <input type="address" name="address" class="email" placeholder="Message..." autocomplete="on" required>
+                  <input type="address" name="message" class="email" placeholder="Message..." autocomplete="on" required>
                 </fieldset>
               </div>
               <div class="col-lg-6 col-sm-6">
@@ -392,7 +348,7 @@
           <div class="footer-widget">
             <h4>Contact Us</h4>
             <p>Kathmandu , Nepal </p>
-            <p><a href="#">010-020-0340</a></p>
+            <p><a href="#">977-9840126725</a></p>
             <p><a href="#">emotively@company.co</a></p>
           </div>
         </div>
@@ -415,7 +371,7 @@
             <div class="logo">
               <img src="{% static 'images/EmotivelyWhite.png' %}" alt="">
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+            <p>An AI-powered Emotion Detection System for You.</p>
           </div>
         </div>
         <div class="col-lg-12">
@@ -438,18 +394,14 @@
   <script src="{% static 'js/popup.js' %}"></script>
   <script src="{% static 'js/custom.js' %}"></script>
 
-<<<<<<< HEAD
   <script>
     $(document).ready(function() {
         // messages timeout for 10 sec 
         setTimeout(function() {
-            $('.message').fadeOut('slow');
+            $('.messages').fadeOut('slow');
         }, 2000); // <-- time in milliseconds, 1000 =  1 sec
     });
 </script>
-=======
-
->>>>>>> 9735a40054aea9923a99f1ba17fcb6bd82531b7a
   
 
 </body>
