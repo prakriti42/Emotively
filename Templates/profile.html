@@ -89,42 +89,37 @@
             {% csrf_token %}
                 <div class="form-group a">
                     <label >First Name</label>
-                   <input type="text" name="first_name" value={{data.firstname}} >
+                   <input type="text" name="first_name" value={{data.firstname}} required >
                 </div>
         
                 <div class="form-group b">
                     <label for="last-name">Last name</label>
-                    <input type="text" name="last_name" id="" value={{data.lastname}}> 
+                    <input type="text" name="last_name" id="" value={{data.lastname}} required> 
                 </div>
         
                 <div class="form-group email-group">
                     <label for="email">Email Address</label>
-                    <input type="text" name="email" id="" value={{data.email}}> 
-                </div>
-        
-                <div class="form-group phone-group">
-                    <label for="phone">Contact Number</label>
-                    <input type="text" name="contactnumber" id="" value= {{data.contactNumber}}>
+                    <input type="text" name="email" id="" value={{data.email}} required> 
                 </div>
 
                 <div class="form-group">
                   <label for="image">Change Avatar Picture</label>
-                  <input id="id_image" type="file" name="dp" value="{{dp.name}">
+                  <input id="id_image" type="file" name="dp" value="{{dp.name}" required>
               </div>
       
             </div>
-            <div class="gradient-button" style="margin-top: 20px; margin-left:420px; margin-bottom:20px; cursor : pointer;"><button type="submit" style="background: none;outline:none;border:none;"><a><i class="fa fa-save"></i>  Save Changes</a></button></div>
+            <div class="gradient-button" style="margin-top: -20px; margin-left:420px; margin-bottom:20px; cursor : pointer;"><button type="submit" style="background: none;outline:none;border:none;"><a><i class="fa fa-save"></i>  Save Changes</a></button></div>
           </form>
-          <div class= "profilecard">
+          <div class= "profilecard" style="margin-top: 150px;">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
                     <div class="pcard">
                         <div class="text">
                             <img src="{{data.dp.url}}" alt="Profile image not found">
                             <h6>{{data.firstname}} {{data.lastname}}</h6>
-                            <i> Total Detections : {{data.totalDetection}} </i>
+                            <b style="color: aliceblue;">Total Detections : {{data.totalDetection}} </b>
+                            <br>
                             <p style="color: aliceblue;">
-                                <strong> Email Address : {{data.email}} </strong> <br>
-                                <strong> Contact Number : {{data.contactNumber}} </strong> <br>
+                                <strong> <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;{{data.email}} </strong> <br>
                                 <strong> User Since : {{request.user.date_joined}} </strong> <br>
                             </p>
                         </div>
@@ -151,10 +146,10 @@
     $(document).ready(function() {
         // messages timeout for 10 sec 
         setTimeout(function() {
-            $('.message').fadeOut('slow');
-        }, 1000); // <-- time in milliseconds, 1000 =  1 sec
+            $('.messages').fadeOut('slow');
+        }, 2000); // <-- time in milliseconds, 1000 =  1 sec
     });
-  </script>
-   
+</script>
+
 </body>
 </html>

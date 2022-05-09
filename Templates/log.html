@@ -49,7 +49,12 @@
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="/profile">
-                                <i class="fas fa-user"></i> My Account
+                                <i class="fas fa-user-circle"></i> My Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/app">
+                                <i class="fas fa-exclamation-circle"></i> Detect Emotion
                             </a>
                         </li>
                         <li class="nav-item">
@@ -118,7 +123,7 @@
                                     </div>
                                     <div class="mt-2 mb-0 text-sm">
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="fas fa-arrow-up me-1"></i>13%
+                                            <i class="fas fa-arrow-up me-1"></i>+
                                         </span>
                                         <span class="text-nowrap text-xs text-muted">Since last month</span>
                                     </div>
@@ -142,7 +147,7 @@
                                     </div>
                                     <div class="mt-2 mb-0 text-sm">
                                         <span class="badge badge-pill bg-soft-success text-success me-2">
-                                            <i class="fas fa-arrow-up me-1"></i>30%
+                                            <i class="fas fa-arrow-up me-1"></i>+
                                         </span>
                                         <span class="text-nowrap text-xs text-muted">Since last month</span>
                                     </div>
@@ -165,8 +170,8 @@
                                         </div>
                                     </div>
                                     <div class="mt-2 mb-0 text-sm">
-                                        <span class="badge badge-pill bg-soft-danger text-danger me-2">
-                                            <i class="fas fa-arrow-down me-1"></i>-5%
+                                        <span class="badge badge-pill bg-soft-success text-success me-2">
+                                            <i class="fas fa-arrow-up me-1"></i>+
                                         </span>
                                         <span class="text-nowrap text-xs text-muted">Since last month</span>
                                     </div>
@@ -185,10 +190,9 @@
                                     <tr>
     
                                         <th scope="col">Date</th>
-                                        <th scope="col">Audio Length</th>
+                                        <th scope="col"> Recording Name</th>
                                         <th scope="col">Result</th>
                                         
-                                        <th scope="col"></th>
                                        
                                     </tr>
                                 </thead>
@@ -203,21 +207,28 @@
                                         </td>
             
                                         <td>
-                                            {{sample.duration}}
+                                            {{sample.recordingname}}
                                         </td>
                                         <td>
-                                            
                                             <span class="badge badge-lg badge-dot">
                                               {% if sample.Tag == "Amused" %}
                                               <i class="bg-success"> </i> {{sample.Tag}}
-                                              {% elif sample.Tag == "Angry" %}
-                                              <i class="bg-danger"> </i> {{sample.Tag}}
-                                              {% elif sample.Tag == "Untagged" %}
-                                              <i class="bg-danger"> </i> {{sample.Tag}}
+                                              {% elif sample.Tag == "Anger" %}
+                                              <i class="bg-danger"> </i> Anger
+
                                               {% elif sample.Tag == "Neutral" %}
                                               <i class="bg-success"> </i> {{sample.Tag}}
+                                              {% elif sample.Tag == "Fear" %}
+                                              <i class="bg-warning"> </i> Fear
+                                              {% elif sample.Tag == "Happy" %}
+                                              <i class="bg-sucess"> </i> Happy
+                                              {% elif sample.Tag == "Disgust" %}
+                                              <i class="bg-success"> </i> {{sample.Tag}}
+                                              {% elif sample.Tag == "Surprise" %}
+                                              <i class="bg-warning"> </i> {{sample.Tag}}
+                                              {% else  %}
+                                              <i class="bg-info"> </i> Untagged
                                               {% endif %}
-                                               
                                             </span>
                                         </td>
                                 

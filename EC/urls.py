@@ -7,6 +7,7 @@ urlpatterns = [
     path('log/', views.log, name='log'),
     path('save' , views.saveAudio , name='save'),
     path('detect' , views.getPrediction , name='detect'),
+    path("saveAudio" , views.savetoModel , name='saveAudio'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

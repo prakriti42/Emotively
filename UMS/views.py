@@ -9,11 +9,13 @@ from .models import Profile , Messages
 from .forms import ProfileForm
 from datetime import datetime
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
+@login_required
 def profile(request):
     #check if the user has logged in
     if request.user.is_authenticated:
@@ -45,6 +47,7 @@ def register(request):
         messages.error(request, 'Please fill in all the fields correctly.')
         return HttpResponse('entered else of regsiter')
 
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -56,36 +59,40 @@ def login_view(request):
             messages.success(request, 'Login successful.')
             return redirect(profile)
         else:
-             messages.info(request, 'User not found.')           
+             messages.error(request, 'User not found.')           
              return render(request, 'index.html')
     else:
         messages.warning(request, 'Please enter username and password')
         return render(request, 'index.html')
 
-
+@login_required
 def logout_view(request):
     logout(request)
     messages.success(request, "Logged Out Sucessfully")
-    return render(request, 'index.html')
+    return redirect("/")
 
-
+@login_required
 def profile_update(request):
 
     if request.method == 'POST':
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             email = request.POST['email']
-            if request.FILES['dp'] is not None or '': 
-                dp = request.FILES['dp']
-                fs = FileSystemStorage()
-                filename = fs.save(dp.name, dp)
-                uploaded_file_url = fs.url(filename)
-                print("uploaded file url",uploaded_file_url)
-                Profile.objects.filter(pk=request.user).update(firstname=first_name, lastname=last_name, dp = dp, email=email)
-                messages.success(request, 'Profile Updated Successfully')
-            else :
-                Profile.objects.filter(pk=request.user).update(firstname=first_name, lastname=last_name, email=email)
-                messages.success(request, 'Profile Updated Successfully')
+            try :
+                if request.FILES['dp'] is not None: 
+                    dp = request.FILES['dp']
+                    fs = FileSystemStorage()
+                    filename = fs.save(dp.name, dp)
+                    uploaded_file_url = fs.url(filename)
+                    print("uploaded file url",uploaded_file_url)
+                    Profile.objects.filter(pk=request.user).update(firstname=first_name, lastname=last_name, dp = dp, email=email)
+                    messages.success(request, 'Profile Updated Successfully')
+                else :
+                    Profile.objects.filter(pk=request.user).update(firstname=first_name, lastname=last_name, email=email)
+                    messages.success(request, 'Profile Updated Successfully')
+            except:
+                messages.error(request, 'Failed to Update Profile!')
+
             data = Profile.objects.filter(user = request.user)
     return redirect(to='/profile' , data = data)
 

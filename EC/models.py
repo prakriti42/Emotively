@@ -14,7 +14,7 @@ class Audio_Storage(models.Model):
     # audio_file = models.FileField(
     #     storage=FileSystemStorage(location=settings.MEDIA_ROOT) , null=False , blank= False
     # )
-    audio_file = models.FileField(upload_to="media/", null=False , blank=False)
+    audio_file = models.FileField(upload_to="media/", null=True , blank=True)
     recordingname = models.CharField(default="Unknown",max_length=100 , null= False , blank = False)
     duration  = models.FloatField(default=0.0,null= False , blank = False)
     dateofUpload = models.DateField(null= False , blank = False)

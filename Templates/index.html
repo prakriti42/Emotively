@@ -118,11 +118,11 @@
             <form action="login" method="POST" >
                 {% csrf_token %}
                 <label>Email / Username</label>
-                <input type="text" name="username"/>
+                <input type="text" name="username" required/>
                 <br />
 
                 <label>Password</label>
-                <input type="password" name="password" />
+                <input type="password" name="password" required />
                 <br />
 
                 <div class="action_btns">
@@ -131,7 +131,7 @@
                 </div>
             </form>
 
-            <a href="#" class="forgot_password">Forgot password?</a>
+            <!-- <a href="#" class="forgot_password">Forgot password?</a> -->
         </div>
 
         <!-- Register Form -->
@@ -139,24 +139,23 @@
             <form action= "register/" method="POST">
               {% csrf_token %} 
                 <label for="username">Username</label>
-                <input type="text"  name= "username"/>
+                <input type="text"  name= "username" required />
                 <br />
 
                 <label>Email Address</label>
-                <input type="email" name="email" />
+                <input type="email" name="email"  required/>
                 <br />
 
                 <label>Password</label>
-                <input type="password" name="password1"/>
+                <input type="password" name="password1" required/>
                 <br />
 
                 <label>Confirm Password</label>
-                <input type="password" name="password2" />
+                <input type="password" name="password2" required/>
                 <br />
 
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <!-- <div class="one_half last"><a href="register" class="btn btn_red">Register</a></div> -->
                     <div class="one_half last"> <button type= "submit" class="btn btn_red" > Register</button></div>
                    
                 </div>
